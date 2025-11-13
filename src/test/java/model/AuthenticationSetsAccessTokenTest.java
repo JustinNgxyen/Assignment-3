@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Field;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class testAuthenticationSetsAccessToken {
+public class AuthenticationSetsAccessTokenTest {
     @Test
     void testAuthenticationAccessToken() throws Exception {
         APIClient client = new APIClient();
