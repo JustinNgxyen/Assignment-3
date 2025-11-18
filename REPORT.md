@@ -17,12 +17,12 @@ Learned: Use try-catch blocks to handle errors, return useful info. to user
 **Observer Pattern:** Event-driven interaction between GUI and controller. The View notifies the Controller of the user's actions.
 
 ## AI Usage (BE HONEST!)
-Used ChatGPT to create the UI using Swing
+**Used ChatGPT to create the UI using Swing**
 Asked: "Create a simple interface for the music recommender"
 Modified: Swing UI 
 Verified: Tested by running the program
 
-Used ClaudeAI to help implement the FeatureBasedStrategy
+**Used ClaudeAI to help implement the FeatureBasedStrategy**
 Asked: "What is a simple way to return artist's top tracks as a recommendation?"
 Modified: How an artist's top tracks are returned using the Spotify artist ID
 Verified: FeatureBasedStrategyTest, GetTopTracksbyArtistTest
