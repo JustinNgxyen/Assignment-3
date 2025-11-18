@@ -12,9 +12,9 @@
 - Learned: Use try-catch blocks to handle errors, return useful info. to user
 
 ## Design Pattern Justifications
-**Strategy Pattern:** Use RecommendationStrategy Interface for all recommendation systems, while FeatureBasedStrategy implements its version
-**Factory Pattern:** RecommendationEngine creates and manages recommendation strategy based on the user input
-**Observer Pattern:** Event-driven interaction between GUI and controller. The View notifies the Controller of the user's actions.
+- **Strategy Pattern:** Use RecommendationStrategy Interface for all recommendation systems, while FeatureBasedStrategy implements its version
+- **Factory Pattern:** RecommendationEngine creates and manages recommendation strategy based on the user input
+- **Observer Pattern:** Event-driven interaction between GUI and controller. The View notifies the Controller of the user's actions.
 
 ## AI Usage (BE HONEST!)
 **Used ChatGPT to create the UI using Swing**
