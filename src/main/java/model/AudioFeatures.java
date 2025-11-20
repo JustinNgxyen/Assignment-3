@@ -15,45 +15,21 @@ public class AudioFeatures {
         this.trackId = trackId;
     }
 
-    // Getters and Setters
-    public String getTrackId() {
-        return trackId;
-    }
-
-    public double getDanceability() {
-        return danceability;
-    }
-
+    // Setters
     public void setDanceability(double danceability) {
         this.danceability = danceability;
-    }
-
-    public double getEnergy() {
-        return energy;
     }
 
     public void setEnergy(double energy) {
         this.energy = energy;
     }
 
-    public double getValence() {
-        return valence;
-    }
-
     public void setValence(double valence) {
         this.valence = valence;
     }
 
-    public double getTempo() {
-        return tempo;
-    }
-
     public void setTempo(double tempo) {
         this.tempo = tempo;
-    }
-
-    public double getAcousticness() {
-        return acousticness;
     }
 
     public void setAcousticness(double acousticness) {

@@ -207,69 +207,6 @@ public class APIClient {
     }
 
     /**
-     * Get audio features for a track
-     */
-    public AudioFeatures getAudioFeatures(String trackId) throws IOException {
-        String url = String.format("%s/audio-features/%s", config.API_BASE_URL, trackId);
-
-        HttpGet httpGet = new HttpGet(url);
-        httpGet.setHeader("Authorization", "Bearer " + accessToken);
-
-        try (CloseableHttpResponse response = httpClient.execute(httpGet)) {
-            int status = response.getCode();
-            String jsonResponse = EntityUtils.toString(response.getEntity());
-            if (status == 401 || jsonResponse.contains("Invalid access token")) {
-                System.out.println("⚠️ Spotify token expired — re-authenticating...");
-                try {
-                    authenticate(); // refresh token
-                } catch (Exception e) {
-                    throw new IOException("Failed to refresh token: " + e.getMessage());
-                }
-                return getAudioFeatures(trackId); // retry once
-            }
-
-            if (jsonResponse == null || jsonResponse.isBlank()) {
-                throw new IOException("Empty response from Spotify Audio Features API for track ID: " + trackId);
-            }
-
-            JsonObject json = JsonParser.parseString(jsonResponse).getAsJsonObject();
-
-            if (json.has("error")) {
-                JsonObject error = json.getAsJsonObject("error");
-                String message = error.has("message") ? error.get("message").getAsString() : "Unknown";
-                System.err.println("⚠️ Spotify returned error for track " + trackId + ": " + message);
-                return null; // ← skip this track
-            }
-
-            // handle completely empty objects too
-            if (json.entrySet().isEmpty() || !json.has("danceability")) {
-                System.err.println("⚠️ No audio features for track ID " + trackId + " (empty response)");
-                return null; // ← skip this track
-            }
-
-
-
-            // Defensive checks for missing fields
-            if (!json.has("danceability")) {
-                System.err.println("⚠️ No audio features available for track ID: " + trackId);
-                return null;
-            }
-
-            AudioFeatures features = new AudioFeatures(trackId);
-            features.setDanceability(json.get("danceability").getAsDouble());
-            features.setEnergy(json.get("energy").getAsDouble());
-            features.setValence(json.get("valence").getAsDouble());
-            features.setTempo(json.get("tempo").getAsDouble());
-            features.setAcousticness(json.get("acousticness").getAsDouble());
-
-            return features;
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
-    /**
      * Get detailed information about a track by its Spotify ID.
      */
     public Track getTrackById(String trackId) throws IOException, ParseException {

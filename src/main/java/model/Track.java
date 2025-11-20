@@ -24,56 +24,20 @@ public class Track {
     }
 
     // Getters and Setters (Encapsulation)
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<String> getArtists() {
         return artists;
     }
 
-    public void setArtists(List<String> artists) {
-        this.artists = artists;
-    }
-
-    public String getAlbumName() {
-        return albumName;
-    }
-
-    public void setAlbumName(String albumName) {
-        this.albumName = albumName;
-    }
-
-    public int getDurationMs() {
-        return durationMs;
-    }
-
     public void setDurationMs(int durationMs) {
         this.durationMs = durationMs;
     }
 
-    public int getPopularity() {
-        return popularity;
-    }
-
     public void setPopularity(int popularity) {
         this.popularity = popularity;
-    }
-
-    public String getPreviewUrl() {
-        return previewUrl;
     }
 
     public void setPreviewUrl(String previewUrl) {

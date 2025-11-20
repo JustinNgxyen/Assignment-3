@@ -21,32 +21,32 @@ public class FeatureBasedStrategy implements RecommendationStrategy {
     @Override
     public List<Track> recommend(List<Track> userTracks, int count) {
         if (userTracks == null || userTracks.isEmpty()) {
-            System.err.println("⚠️ No seed tracks provided for recommendation.");
+            System.err.println("No seed tracks provided for recommendation.");
             return new ArrayList<>();
         }
 
         try {
-            // 1️⃣ Use the first track as the seed
+            // Use the first track as the seed
             Track seedTrack = userTracks.get(0);
             if (seedTrack.getArtists().isEmpty()) {
-                System.err.println("⚠️ No artist found for seed track.");
+                System.err.println("No artist found for seed track.");
                 return new ArrayList<>();
             }
 
-            // 2️⃣ Search the artist by name to get the Spotify artist ID
+            // Search the artist by name to get the Spotify artist ID
             String artistName = seedTrack.getArtists().get(0);
             List<Artist> artistMatches = apiClient.searchArtistByName(artistName);
             if (artistMatches.isEmpty()) {
-                System.err.println("⚠️ Artist not found: " + artistName);
+                System.err.println("Artist not found: " + artistName);
                 return new ArrayList<>();
             }
 
             String artistId = artistMatches.get(0).getId();
 
-            // 3️⃣ Fetch that artist’s top tracks
+            // Fetch that artist’s top tracks
             List<Track> topTracks = apiClient.getTopTracksForArtist(artistId, "US");
 
-            // 4️⃣ Limit the results to 'count'
+            // Limit the results to 'count'
             if (topTracks.size() > count) {
                 return topTracks.subList(0, count);
             }

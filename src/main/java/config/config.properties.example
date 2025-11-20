@@ -1,8 +1,8 @@
 package config;
 
 public class config {
-    public static final String CLIENT_ID = "b962581da508444dba95cd7d82391c97";
-    public static final String CLIENT_SECRET = "a92c15e9a1d4446a80566d1035b08d21";
+    public static final String CLIENT_ID = "YOUR_CLIENT_ID";
+    public static final String CLIENT_SECRET = "YOUR_CLIENT_SECRET";
 
     // API Endpoints
     public static final String TOKEN_URL = "https://accounts.spotify.com/api/token";

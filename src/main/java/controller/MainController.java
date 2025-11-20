@@ -25,12 +25,12 @@ public class MainController {
 
         try {
             System.out.println("Authenticating Spotify API client...");
-            apiClient.authenticate();   // 🔥 get a fresh token here
+            apiClient.authenticate();
         } catch (Exception e) {
             System.err.println("Failed to authenticate APIClient: " + e.getMessage());
         }
 
-        // ✅ Use apiService (or build FeatureBasedStrategy later)
+        // Use APIService
         this.recommendationEngine = new RecommendationEngine(new FeatureBasedStrategy(apiClient));
 
         initializeServerConnection();
@@ -113,7 +113,4 @@ public class MainController {
         worker.execute();
     }
 
-    public void shutdown() {
-        serverConnection.disconnect();
-    }
 }
